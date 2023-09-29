@@ -60,7 +60,7 @@ export class ProductListComponent implements OnInit {
 
   // Handle editing a product
   editProduct(product: Product) {
-    this.router.navigate(['/edit-product', product._id]);
+    this.router.navigate(['/edit', product._id]);
   }
 
   // Handle deleting a product

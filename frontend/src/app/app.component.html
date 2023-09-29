@@ -1,8 +1,21 @@
+<!-- Navigation bar -->
 <div class="toolbar" role="banner">
-  <span class="name">Product Catalog</span>
+  <h1 class="name">Products Catalog App</h1>
+  <nav>
+    <ul>
+      <li><a routerLink="/">Product List</a></li>
+      <li><a routerLink="/create">Create a new product</a></li>
+    </ul>
+  </nav>
 </div>
 
-<div class="content" role="main">
-  <h1>Products</h1>
-  <router-outlet></router-outlet>
+<!-- Main Router Outlet -->
+<div class="container-fluid" id="principal">
+  <div class="row">
+    <div class="col">
+      <div>
+        <router-outlet></router-outlet>
+      </div>
+    </div>
+  </div>
 </div>
