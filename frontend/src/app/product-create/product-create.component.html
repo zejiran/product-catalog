@@ -1,0 +1,41 @@
+<div class="container">
+    <h2 class="mt-4 mb-3">Create New Product</h2>
+    <form (ngSubmit)="createProduct()" class="mb-4">
+        <div class="form-group">
+            <label for="name">Name:</label>
+            <input type="text" id="name" [(ngModel)]="newProduct.name" class="form-control" required />
+        </div>
+
+        <div class="form-group">
+            <label for="description">Description:</label>
+            <textarea id="description" [(ngModel)]="newProduct.description" class="form-control"></textarea>
+        </div>
+
+        <div class="form-group">
+            <label for="sku">SKU:</label>
+            <input type="text" id="sku" [(ngModel)]="newProduct.sku" class="form-control" required />
+        </div>
+
+        <div class="form-group">
+            <label for="image">Image URL:</label>
+            <input type="text" id="image" [(ngModel)]="newProduct.image" class="form-control" required />
+        </div>
+
+        <div class="form-group">
+            <label for="tags">Tags (comma-separated):</label>
+            <input type="text" id="tags" [(ngModel)]="newProduct.tags" class="form-control" />
+        </div>
+
+        <div class="form-group">
+            <label for="price">Price:</label>
+            <input type="number" id="price" [(ngModel)]="newProduct.price" class="form-control" required />
+        </div>
+
+        <div class="form-group">
+            <label for="stock">Stock:</label>
+            <input type="number" id="stock" [(ngModel)]="newProduct.stock" class="form-control" required />
+        </div>
+
+        <button type="submit" class="btn btn-primary">Create Product</button>
+    </form>
+</div>
