@@ -61,31 +61,4 @@ export class ProductListComponent implements OnInit {
   viewProduct(product: Product) {
     this.router.navigate(['/product', product._id]);
   }
-
-  // Handle editing a product
-  editProduct(product: Product) {
-    this.router.navigate(['/edit', product._id]);
-  }
-
-  // Handle deleting a product
-  deleteProduct(product: Product) {
-    const confirmDelete = window.confirm(`Are you sure you want to delete ${product.name}?`);
-    if (confirmDelete) {
-      if (product._id) {
-        this.productService.deleteProduct(product._id).subscribe(() => {
-          // Product deleted from the server, update the product list.
-          const index = this.products.findIndex(p => p._id === product._id);
-          if (index !== -1) {
-            this.products.splice(index, 1);
-            this.updateFilteredProducts();
-          }
-        }, (error) => {
-          console.error("Error deleting product:", error);
-          // You can handle and display an error message here if needed.
-        });
-      } else {
-        console.error("Product does not have an ID.");
-      }
-    }
-  }
 }
