@@ -12,7 +12,7 @@ export class ProductListComponent implements OnInit {
   products: Product[] = [];
   filteredProducts: Product[] = [];
   currentPage: number = 1;
-  itemsPerPage: number = 10;
+  itemsPerPage: number = 3;
   searchTerm: string = '';
   totalPages: number = 1;
 
@@ -33,16 +33,19 @@ export class ProductListComponent implements OnInit {
 
   // Update the list of filtered products based on search term
   updateFilteredProducts() {
-    this.filteredProducts = this.products.filter((product) =>
-      product.name.toLowerCase().includes(this.searchTerm.toLowerCase()) ||
-      product.tags.some(tag => tag.toLowerCase().includes(this.searchTerm.toLowerCase()))
-    );
+    this.filteredProducts = this.products
+      .filter((product) =>
+        product.name.toLowerCase().includes(this.searchTerm.toLowerCase()) ||
+        product.tags.some(tag => tag.toLowerCase().includes(this.searchTerm.toLowerCase()))
+      )
+      .slice((this.currentPage - 1) * this.itemsPerPage, this.currentPage * this.itemsPerPage);
   }
 
   // Pagination: Go to the previous page
   previousPage() {
     if (this.currentPage > 1) {
       this.currentPage--;
+      this.updateFilteredProducts();
     }
   }
 
@@ -50,6 +53,7 @@ export class ProductListComponent implements OnInit {
   nextPage() {
     if (this.currentPage < this.totalPages) {
       this.currentPage++;
+      this.updateFilteredProducts();
     }
   }
 
@@ -67,13 +71,10 @@ export class ProductListComponent implements OnInit {
   deleteProduct(product: Product) {
     const confirmDelete = window.confirm(`Are you sure you want to delete ${product.name}?`);
     if (confirmDelete) {
-      if (product._id) {
-        this.productService.deleteProduct(product._id).subscribe(() => {
-          // Product deleted, update the product list.
-          this.getProducts();
-        });
-      } else {
-        console.error("Product does not have an ID.");
+      const index = this.products.findIndex(p => p._id === product._id);
+      if (index !== -1) {
+        this.products.splice(index, 1);
+        this.updateFilteredProducts();
       }
     }
   }
