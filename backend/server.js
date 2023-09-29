@@ -13,11 +13,11 @@ const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
-// Middleware
-app.use(errorHandler);
-
 // Define API routes
 app.use('/api/products', require('./routes/productRoutes'));
+
+// Middleware
+app.use(errorHandler);
 
 // Start the server
 app.listen(port, () => {
