@@ -71,10 +71,20 @@ export class ProductListComponent implements OnInit {
   deleteProduct(product: Product) {
     const confirmDelete = window.confirm(`Are you sure you want to delete ${product.name}?`);
     if (confirmDelete) {
-      const index = this.products.findIndex(p => p._id === product._id);
-      if (index !== -1) {
-        this.products.splice(index, 1);
-        this.updateFilteredProducts();
+      if (product._id) {
+        this.productService.deleteProduct(product._id).subscribe(() => {
+          // Product deleted from the server, update the product list.
+          const index = this.products.findIndex(p => p._id === product._id);
+          if (index !== -1) {
+            this.products.splice(index, 1);
+            this.updateFilteredProducts();
+          }
+        }, (error) => {
+          console.error("Error deleting product:", error);
+          // You can handle and display an error message here if needed.
+        });
+      } else {
+        console.error("Product does not have an ID.");
       }
     }
   }
