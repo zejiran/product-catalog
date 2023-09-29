@@ -8,3 +8,8 @@
 button {
     margin-right: 5px;
 }
+
+img {
+    height: 250px;
+    object-fit: cover;
+}
