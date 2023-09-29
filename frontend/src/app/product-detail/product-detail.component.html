@@ -1,0 +1,13 @@
+<div class="container">
+    <h2>Product Detail</h2>
+    <div *ngIf="product" class="product-card">
+        <img [src]="product.image" alt="{{ product.name }}" />
+        <h3>{{ product.name }}</h3>
+        <p>{{ product.sku }}</p>
+        <p>Price: ${{ product.price }}</p>
+        <!-- Display product tags if available -->
+        <p *ngIf="product.tags.length > 0">Tags: {{ product.tags.join(', ') }}</p>
+        <button (click)="editProduct()">Edit</button>
+        <button (click)="deleteProduct()">Delete</button>
+    </div>
+</div>
