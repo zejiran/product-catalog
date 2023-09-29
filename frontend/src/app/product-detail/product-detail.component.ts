@@ -31,7 +31,7 @@ export class ProductDetailComponent implements OnInit {
   // Handle editing a product
   editProduct() {
     if (this.product && this.product._id) {
-      this.router.navigate(['/edit-product', this.product._id]);
+      this.router.navigate(['/edit', this.product._id]);
     }
   }
 
@@ -42,7 +42,7 @@ export class ProductDetailComponent implements OnInit {
       if (confirmDelete) {
         this.productService.deleteProduct(this.product._id).subscribe(() => {
           // Product deleted, navigate back to the product list.
-          this.router.navigate(['/product-list']);
+          this.router.navigate(['/']);
         });
       }
     }

@@ -1,23 +1,42 @@
 <div class="container">
-    <h2>Product List</h2>
+    <h2 class="mt-4">Product List</h2>
     <!-- Filter products by name or tags -->
-    <input type="text" [(ngModel)]="searchTerm" placeholder="Search by Name or Tags" />
-    <!-- Display filtered products -->
-    <div *ngFor="let product of filteredProducts" class="product-card">
-        <img [src]="product.image" alt="{{ product.name }}" />
-        <h3>{{ product.name }}</h3>
-        <p>{{ product.sku }}</p>
-        <p>Price: ${{ product.price }}</p>
-        <!-- Display product tags if available -->
-        <p *ngIf="product.tags.length > 0">Tags: {{ product.tags.join(', ') }}</p>
-        <button (click)="viewProduct(product)">View</button>
-        <button (click)="editProduct(product)">Edit</button>
-        <button (click)="deleteProduct(product)">Delete</button>
+    <div class="input-group mb-3">
+        <input type="text" class="form-control" [(ngModel)]="searchTerm" placeholder="Search by Name or Tags" />
+        <div class="input-group-append">
+            <button class="btn btn-outline-secondary" type="button">Search</button>
+        </div>
     </div>
+
+    <!-- Display filtered products -->
+    <div class="row">
+        <div *ngFor="let product of filteredProducts" class="col-md-4 mb-4">
+            <div class="card">
+                <img [src]="product.image" class="card-img-top" alt="{{ product.name }}" />
+                <div class="card-body">
+                    <h5 class="card-title">{{ product.name }}</h5>
+                    <p class="card-text">{{ product.sku }}</p>
+                    <p class="card-text">Price: ${{ product.price }}</p>
+                    <!-- Display product tags if available -->
+                    <p *ngIf="product.tags.length > 0" class="card-text">
+                        Tags: {{ product.tags.join(', ') }}
+                    </p>
+                    <button (click)="viewProduct(product)" class="btn btn-primary">View</button>
+                    <button (click)="editProduct(product)" class="btn btn-secondary">Edit</button>
+                    <button (click)="deleteProduct(product)" class="btn btn-danger">Delete</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- Pagination -->
-    <div class="pagination">
-        <button (click)="previousPage()" [disabled]="currentPage === 1">Previous</button>
-        <span>Page {{ currentPage }} of {{ totalPages }}</span>
-        <button (click)="nextPage()" [disabled]="currentPage === totalPages">Next</button>
+    <div class="pagination mt-4">
+        <button class="btn btn-outline-secondary" (click)="previousPage()" [disabled]="currentPage === 1">
+            Previous
+        </button>
+        <span class="mx-2">Page {{ currentPage }} of {{ totalPages }}</span>
+        <button class="btn btn-outline-secondary" (click)="nextPage()" [disabled]="currentPage === totalPages">
+            Next
+        </button>
     </div>
 </div>

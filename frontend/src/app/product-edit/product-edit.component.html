@@ -1,27 +1,42 @@
 <div class="container">
     <h2>Edit Product</h2>
     <form (ngSubmit)="updateProduct()">
-        <label for="name">Name:</label>
-        <input type="text" id="name" name="name" [(ngModel)]="product.name" required />
+        <div class="form-group">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" class="form-control" [(ngModel)]="product.name" required />
+        </div>
 
-        <label for="description">Description:</label>
-        <textarea id="description" name="description" [(ngModel)]="product.description"></textarea>
+        <div class="form-group">
+            <label for="description">Description:</label>
+            <textarea id="description" name="description" class="form-control"
+                [(ngModel)]="product.description"></textarea>
+        </div>
 
-        <label for="sku">SKU:</label>
-        <input type="text" id="sku" name="sku" [(ngModel)]="product.sku" required />
+        <div class="form-group">
+            <label for="sku">SKU:</label>
+            <input type="text" id="sku" name="sku" class="form-control" [(ngModel)]="product.sku" required />
+        </div>
 
-        <label for="image">Image URL:</label>
-        <input type="text" id="image" name="image" [(ngModel)]="product.image" required />
+        <div class="form-group">
+            <label for="image">Image URL:</label>
+            <input type="text" id="image" name="image" class="form-control" [(ngModel)]="product.image" required />
+        </div>
 
-        <label for="tags">Tags (comma-separated):</label>
-        <input type="text" id="tags" name="tags" [(ngModel)]="product.tags" />
+        <div class="form-group">
+            <label for="tags">Tags (comma-separated):</label>
+            <input type="text" id="tags" name="tags" class="form-control" [(ngModel)]="product.tags" />
+        </div>
 
-        <label for="price">Price:</label>
-        <input type="number" id="price" name="price" [(ngModel)]="product.price" required />
+        <div class="form-group">
+            <label for="price">Price:</label>
+            <input type="number" id="price" name="price" class="form-control" [(ngModel)]="product.price" required />
+        </div>
 
-        <label for="stock">Stock:</label>
-        <input type="number" id="stock" name="stock" [(ngModel)]="product.stock" required />
+        <div class="form-group">
+            <label for="stock">Stock:</label>
+            <input type="number" id="stock" name="stock" class="form-control" [(ngModel)]="product.stock" required />
+        </div>
 
-        <button type="submit">Update Product</button>
+        <button type="submit" class="btn btn-primary">Update Product</button>
     </form>
 </div>

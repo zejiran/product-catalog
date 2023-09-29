@@ -1,28 +1,57 @@
-<!-- product-create.component.html -->
 <div class="container">
     <h2>Create New Product</h2>
-    <form (ngSubmit)="createProduct()">
-        <label for="name">Name:</label>
-        <input type="text" id="name" [(ngModel)]="newProduct.name" name="name" required />
+    <form (ngSubmit)="createProduct()" class="needs-validation" novalidate>
+        <div class="form-group">
+            <label for="name">Name:</label>
+            <input type="text" id="name" [(ngModel)]="newProduct.name" name="name" class="form-control" required />
+            <div class="invalid-feedback">
+                Please provide a valid name.
+            </div>
+        </div>
 
-        <label for="description">Description:</label>
-        <textarea id="description" [(ngModel)]="newProduct.description" name="description"></textarea>
+        <div class="form-group">
+            <label for="description">Description:</label>
+            <textarea id="description" [(ngModel)]="newProduct.description" name="description"
+                class="form-control"></textarea>
+        </div>
 
-        <label for="sku">SKU:</label>
-        <input type="text" id="sku" [(ngModel)]="newProduct.sku" name="sku" required />
+        <div class="form-group">
+            <label for="sku">SKU:</label>
+            <input type="text" id="sku" [(ngModel)]="newProduct.sku" name="sku" class="form-control" required />
+            <div class="invalid-feedback">
+                Please provide a valid SKU.
+            </div>
+        </div>
 
-        <label for="image">Image URL:</label>
-        <input type="text" id="image" [(ngModel)]="newProduct.image" name="image" required />
+        <div class="form-group">
+            <label for="image">Image URL:</label>
+            <input type="text" id="image" [(ngModel)]="newProduct.image" name="image" class="form-control" required />
+            <div class="invalid-feedback">
+                Please provide a valid image URL.
+            </div>
+        </div>
 
-        <label for="tags">Tags (comma-separated):</label>
-        <input type="text" id="tags" [(ngModel)]="newProduct.tags" name="tags" />
+        <div class="form-group">
+            <label for="tags">Tags (comma-separated):</label>
+            <input type="text" id="tags" [(ngModel)]="newProduct.tags" name="tags" class="form-control" />
+        </div>
 
-        <label for="price">Price:</label>
-        <input type="number" id="price" [(ngModel)]="newProduct.price" name="price" required />
+        <div class="form-group">
+            <label for="price">Price:</label>
+            <input type="number" id="price" [(ngModel)]="newProduct.price" name="price" class="form-control" required />
+            <div class="invalid-feedback">
+                Please provide a valid price.
+            </div>
+        </div>
 
-        <label for="stock">Stock:</label>
-        <input type="number" id="stock" [(ngModel)]="newProduct.stock" name="stock" required />
+        <div class="form-group">
+            <label for="stock">Stock:</label>
+            <input type="number" id="stock" [(ngModel)]="newProduct.stock" name="stock" class="form-control" required />
+            <div class="invalid-feedback">
+                Please provide a valid stock quantity.
+            </div>
+        </div>
 
-        <button type="submit">Create Product</button>
+        <button type="submit" class="btn btn-primary">Create Product</button>
     </form>
 </div>
