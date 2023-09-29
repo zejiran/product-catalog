@@ -2,6 +2,8 @@
 
 Welcome to the Product Catalog App! This project is designed and developed as a full-stack application that provides a comprehensive catalog of products with various features for easy management.
 
+<img width="1280" alt="Home View" src="https://github.com/zejiran/product-catalog/assets/30379522/421feeb6-2d3d-4e66-a98b-d3ef34841f84">
+
 ## Table of Contents
 
 - [Product Catalog App](#product-catalog-app)
