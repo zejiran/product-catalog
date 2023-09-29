@@ -2,9 +2,10 @@
     <h2 class="mt-4">Product List</h2>
     <!-- Filter products by name or tags -->
     <div class="input-group mb-3">
-        <input type="text" class="form-control" [(ngModel)]="searchTerm" placeholder="Search by Name or Tags" />
+        <input type="text" class="form-control" [(ngModel)]="searchTerm" placeholder="Search by Name or Tags"
+            (keyup.enter)="getProducts()" />
         <div class="input-group-append">
-            <button class="btn btn-outline-secondary" type="button">Search</button>
+            <button (click)="getProducts()" class="btn btn-outline-secondary" type="button">Search</button>
         </div>
     </div>
 
