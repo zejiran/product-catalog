@@ -1,0 +1,23 @@
+<div class="container">
+    <h2>Product List</h2>
+    <!-- Filter products by name or tags -->
+    <input type="text" [(ngModel)]="searchTerm" placeholder="Search by Name or Tags" />
+    <!-- Display filtered products -->
+    <div *ngFor="let product of filteredProducts" class="product-card">
+        <img [src]="product.image" alt="{{ product.name }}" />
+        <h3>{{ product.name }}</h3>
+        <p>{{ product.sku }}</p>
+        <p>Price: ${{ product.price }}</p>
+        <!-- Display product tags if available -->
+        <p *ngIf="product.tags.length > 0">Tags: {{ product.tags.join(', ') }}</p>
+        <button (click)="viewProduct(product)">View</button>
+        <button (click)="editProduct(product)">Edit</button>
+        <button (click)="deleteProduct(product)">Delete</button>
+    </div>
+    <!-- Pagination -->
+    <div class="pagination">
+        <button (click)="previousPage()" [disabled]="currentPage === 1">Previous</button>
+        <span>Page {{ currentPage }} of {{ totalPages }}</span>
+        <button (click)="nextPage()" [disabled]="currentPage === totalPages">Next</button>
+    </div>
+</div>
