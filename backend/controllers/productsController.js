@@ -53,7 +53,7 @@ const deleteProduct = asyncHandler(async (req, res) => {
         throw new Error('Product not found');
     }
 
-    await product.remove();
+    await Product.findByIdAndRemove(productId);
 
     res.status(200).json({ message: 'Product deleted', id: productId });
 });
