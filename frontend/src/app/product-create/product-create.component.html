@@ -54,4 +54,9 @@
 
         <button type="submit" class="btn btn-primary">Create Product</button>
     </form>
+
+    <!-- Display error message if there is one -->
+    <div *ngIf="errorMessage" class="alert alert-danger mt-3">
+        {{ errorMessage }}
+    </div>
 </div>

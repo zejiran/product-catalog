@@ -19,15 +19,34 @@ export class ProductCreateComponent implements OnInit {
     stock: 0,
   };
 
+  errorMessage: string = '';
+
   constructor(private productService: ProductService, private router: Router) { }
 
   ngOnInit(): void { }
 
   // Handle form submission to create a new product
   createProduct() {
-    this.productService.createProduct(this.newProduct).subscribe(() => {
-      // Product created, navigate back to the product list
-      this.router.navigate(['/']);
-    });
+    this.errorMessage = ''; // Clear any previous error message
+
+    this.productService.createProduct(this.newProduct).subscribe(
+      (response) => {
+        if (response.status === 201) {
+          // Product created successfully
+          console.log('Product created:', response.body);
+          this.router.navigate(['/']);
+        } else {
+          this.errorMessage = 'An unexpected error occurred. Please try again.';
+        }
+      },
+      (error) => {
+        // Handle error response from the API
+        if (error.error && error.error.message) {
+          this.errorMessage = error.error.message;
+        } else {
+          this.errorMessage = 'An unexpected error occurred. Please try again.';
+        }
+      }
+    );
   }
 }

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpResponse } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 import { Product } from './product.model';
@@ -24,8 +24,10 @@ export class ProductService {
     }
 
     // Create a new product
-    createProduct(product: Product): Observable<Product> {
-        return this.http.post<Product>(this.apiUrl, product);
+    createProduct(product: Product): Observable<HttpResponse<any>> {
+        return this.http.post<any>(`${this.apiUrl}`, product, {
+            observe: 'response',
+        });
     }
 
     // Update a product by ID
